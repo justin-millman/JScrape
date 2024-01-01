@@ -11,7 +11,8 @@ class Round:
 	A Jeopardy! game is broken into three rounds: Jeopardy! (sometimes called "Single Jeopardy!"), Double Jeopardy! and
 	Final Jeopardy! The first two rounds each consist of 30 clues broken into six categories; clues are valued starting
 	at $200 for the Jeopardy! round and $400 for the Double Jeopardy! round, with each subsequent clue incrementing in
-	value by that same amount.
+	value by that same amount. Not all of the 30 clues in the round are guaranteed to be revealed over the course of the
+	game.
 	"""
 
 	def __init__(self, table: Element) -> None:
