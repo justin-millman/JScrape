@@ -12,10 +12,15 @@ BASE_URL: Final[str] = "https://j-archive.com/showgame.php"
 
 class Game:
 	"""
+	Represents a game of Jeopardy!.
 	"""
 
 	def __init__(self, game_id: int) -> None:
 		"""
+		Initializes a Game.
+		
+		:param game_id: The J!Archive ID of the game. Note that this is the unique identifier used internally by
+		  J!Archive and does not directly correspond to the "game number."
 		"""
 		game_url: str = f"{BASE_URL}?game_id={game_id}"
 		webpage: HTTPResponse = web.urlopen(game_url)

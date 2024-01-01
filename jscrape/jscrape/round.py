@@ -6,10 +6,20 @@ from .category import Category
 
 class Round:
 	"""
+	Represents a single non-final round of Jeopardy!.
+	
+	A Jeopardy! game is broken into three rounds: Jeopardy! (sometimes called "Single Jeopardy!"), Double Jeopardy! and
+	Final Jeopardy! The first two rounds each consist of 30 clues broken into six categories; clues are valued starting
+	at $200 for the Jeopardy! round and $400 for the Double Jeopardy! round, with each subsequent clue incrementing in
+	value by that same amount.
 	"""
 
 	def __init__(self, table: Element) -> None:
 		"""
+		Initializes a Round.
+		
+		:param table: The ``<table>`` element from the J!Archive HTML document in which the 6x6 grid for the Round is
+		  displayed (with each column dedicated to a single category of five clues plus a header cell).
 		"""
 		category_cells: List[Element] = table.cssselect(".category")
 		clue_cells: List[Element] = table.cssselect(".clue")
