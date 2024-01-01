@@ -35,7 +35,8 @@ class Category:
 	
 	A Category consists of a name, possibly a note, and five clues ordered from lowest-valued (and easiest) to
 	highest-valued (and hardest). A Category can be played in either the Jeopardy! round or the Double Jeopardy! round,
-	and as such is not associated with any dollar amounts.
+	and as such is not associated with any dollar amounts. Clues are revealed to both the players and the audience
+	progressively; not all clues in a Category are guaranteed to be shown.
 	"""
 
 	def __init__(self, header: Element, q1: Element, q2: Element, q3: Element, q4: Element, q5: Element) -> None:
@@ -58,4 +59,4 @@ class Category:
 		header_rows: List[Element] = header.cssselect("tr")
 		self.name: str = header_rows[0].text_content()
 		self.note: Optional[str] = _get_category_note(header_rows[1].text_content())
-		self.clues: List[Clue] = [Clue(q1), Clue(q2), Clue(q3), Clue(q4), Clue(q5)]
+		self.clues: List[Optional[Clue]] = [Clue.create(q) for q in (q1, q2, q3, q4, q5)]
